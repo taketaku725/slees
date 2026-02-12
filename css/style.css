@@ -1,0 +1,283 @@
+:root {
+  --neon-red: #ff003c;
+  --neon-purple: #a100ff;
+  --dark-bg: #0a0a0a;
+  --card-bg: #151515;
+}
+
+/* ===== ベース ===== */
+
+body {
+  margin: 0;
+  font-family: 'Noto Sans JP', sans-serif;
+  background: radial-gradient(circle at 20% 0%, #1a001f 0%, #0a0a0a 40%);
+  color: #eaeaea;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("../assets/noise.png");
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* ===== ヒーローセクション ===== */
+
+.hero {
+  text-align: center;
+  padding: 120px 20px;
+}
+
+.hero h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #ff003c;
+  text-shadow:
+    0 0 10px #ff003c,
+    0 0 20px #ff003c88;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: #bbb;
+}
+
+
+/* ===== ヘッダー ===== */
+
+header {
+  text-align: center;
+  padding: 30px 20px;
+  border-bottom: 1px solid #222;
+}
+
+header h1 {
+  margin: 0;
+  font-weight: 600;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 3px;
+  color: #ff003c;
+  animation: neonPulse 3s ease-in-out infinite;
+}
+
+@keyframes neonPulse {
+  0% { text-shadow: 0 0 3px #ff003c; }
+  50% { text-shadow: 0 0 14px #ff003c; }
+  100% { text-shadow: 0 0 3px #ff003c; }
+}
+
+/* ===== ナビ ===== */
+
+nav {
+  margin-top: 15px;
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #ccc;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: var(--neon-purple);
+  text-shadow: 0 0 6px var(--neon-purple);
+}
+
+nav a.active {
+  color: var(--neon-red);
+  text-shadow: 0 0 8px var(--neon-red);
+}
+
+/* ===== メイン ===== */
+
+main {
+  padding: 50px 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* ===== セクション ===== */
+
+section {
+  margin-bottom: 60px;
+}
+
+section h2 {
+  border-left: 4px solid var(--neon-purple);
+  padding-left: 10px;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+/* ===== カードUI ===== */
+
+.card {
+  background: linear-gradient(145deg, #161616, #111);
+  padding: 22px;
+  border-radius: 14px;
+  border: 1px solid #222;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.card:hover {
+  border-color: var(--neon-purple);
+  box-shadow:
+    0 0 10px #a100ff55,
+    0 0 30px #a100ff22;
+  transform: translateY(-4px);
+}
+
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  padding: 1px;
+  background: linear-gradient(
+    130deg,
+    transparent 40%,
+    #a100ff33 50%,
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+
+/* ===== メンバーUI ===== */
+
+.member-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.member-card {
+  background: linear-gradient(145deg, #161616, #111);
+  padding: 22px;
+  border-radius: 14px;
+  border: 1px solid #222;
+  transition: 0.3s ease;
+}
+
+.member-card:hover {
+  border-color: var(--neon-purple);
+  box-shadow:
+    0 0 12px #a100ff55,
+    0 0 30px #a100ff22;
+  transform: translateY(-4px);
+}
+
+.member-card h3 {
+  color: var(--neon-red);
+  margin-top: 0;
+}
+
+
+/* ===== 飲みゲーUI ===== */
+
+.game-card {
+  background: linear-gradient(145deg, #161616, #111);
+  padding: 25px;
+  border-radius: 16px;
+  border: 1px solid #222;
+  margin-bottom: 40px;
+  transition: 0.3s ease;
+}
+
+.game-card:hover {
+  border-color: var(--neon-purple);
+  box-shadow:
+    0 0 12px #a100ff55,
+    0 0 30px #a100ff22;
+}
+
+.game-card h3 {
+  margin-top: 0;
+  color: var(--neon-red);
+}
+
+.game-meta {
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+  color: #eaeaea;
+}
+
+.game-meta span {
+  color: #eaeaea;
+  font-weight: 600;
+}
+
+.game-rule h4 {
+  margin-bottom: 10px;
+  color: #ccc;
+}
+
+.danger-level {
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+.level-1 { color: #777; }
+.level-2 { color: #a100ff; }
+.level-3 { color: #ff7700; }
+.level-4 { color: var(--neon-red); }
+.level-5 { 
+  color: var(--neon-red);
+  text-shadow: 0 0 8px var(--neon-red);
+}
+
+.game-author {
+  color: #eaeaea;
+  margin-top: -5px;
+  font-size: 0.9rem;
+}
+
+
+/* ===== フッター ===== */
+
+footer {
+  text-align: center;
+  padding: 30px;
+  border-top: 1px solid #222;
+  color: #777;
+}
+
