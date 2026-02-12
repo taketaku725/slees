@@ -1,7 +1,5 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const dangers = document.querySelectorAll(".danger-level");
-
-  dangers.forEach(el => {
+function generateStars() {
+  document.querySelectorAll(".danger-level").forEach(el => {
     const level = parseInt(el.dataset.level, 10);
     const max = 5;
 
@@ -11,8 +9,54 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     el.textContent = stars;
-
-    // レベルに応じたクラス付与
     el.classList.add(`level-${level}`);
   });
+}
+
+async function loadDynamicGames() {
+  try {
+    const res = await fetch("/.netlify/functions/get-games");
+    const submissions = await res.json();
+
+    const container = document.getElementById("dynamic-games");
+    if (!container) return;
+
+    container.innerHTML = "";
+
+    submissions.forEach(item => {
+      const d = item.data;
+
+      const card = document.createElement("div");
+      card.className = "game-card";
+
+      card.innerHTML = `
+        <h3>${d.title}</h3>
+        <div class="game-meta">
+          <p><span>推奨人数：</span>${d.players}</p>
+          <p><span>所要時間：</span>${d.time}</p>
+          <p><span>必要なもの：</span>${d.items}</p>
+          <p class="danger">
+            <span>危険度：</span>
+            <span class="danger-level" data-level="${d.danger}"></span>
+          </p>
+        </div>
+        <div class="game-rule">
+          <h4>ルール</h4>
+          <p>${d.rule.replace(/\n/g, "<br>")}</p>
+        </div>
+      `;
+
+      container.appendChild(card);
+    });
+
+    generateStars();
+
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  generateStars();      // 固定カード用
+  loadDynamicGames();   // 投稿カード用
 });
