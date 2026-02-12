@@ -1,6 +1,6 @@
 function generateStars() {
   document.querySelectorAll(".danger-level").forEach(el => {
-    const level = parseInt(el.dataset.level, 10);
+    const level = parseInt(el.dataset.level, 10) || 1;
     const max = 5;
 
     let stars = "";
@@ -23,8 +23,14 @@ async function loadDynamicGames() {
 
     container.innerHTML = "";
 
+    // 🔥 先に並び替え
+    submissions.sort((a, b) =>
+      new Date(b.created_at) - new Date(a.created_at)
+    );
+
     submissions.forEach(item => {
       const d = item.data;
+      const dangerLevel = parseInt(d.danger, 10) || 1;
 
       const card = document.createElement("div");
       card.className = "game-card";
@@ -37,12 +43,12 @@ async function loadDynamicGames() {
           <p><span>必要なもの：</span>${d.items}</p>
           <p class="danger">
             <span>危険度：</span>
-            <span class="danger-level" data-level="${d.danger}"></span>
+            <span class="danger-level" data-level="${dangerLevel}"></span>
           </p>
         </div>
         <div class="game-rule">
           <h4>ルール</h4>
-          <p>${d.rule.replace(/\n/g, "<br>")}</p>
+          <p>${(d.rule || "").replace(/\n/g, "<br>")}</p>
         </div>
       `;
 
@@ -57,6 +63,6 @@ async function loadDynamicGames() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  generateStars();      // 固定カード用
-  loadDynamicGames();   // 投稿カード用
+  generateStars();    // 固定カード用
+  loadDynamicGames(); // 投稿カード用
 });
