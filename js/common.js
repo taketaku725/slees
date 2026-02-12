@@ -15,7 +15,7 @@ function generateStars() {
 
 async function loadDynamicGames() {
   try {
-    const res = await fetch("/data/games.json");
+    const res = await fetch("data/games.json");
     const games = await res.json();
 
     const container = document.getElementById("dynamic-games");
@@ -67,5 +67,6 @@ document.addEventListener("DOMContentLoaded", () => {
   generateStars();    // 固定カード用
   loadDynamicGames(); // 投稿カード用
 });
+
 
 
