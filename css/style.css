@@ -10,25 +10,17 @@
 body {
   margin: 0;
   font-family: 'Noto Sans JP', sans-serif;
-  background: radial-gradient(circle at 20% 0%, #1a001f 0%, #0a0a0a 40%);
+  background:
+    radial-gradient(circle at 20% 0%, #1a001f 0%, #0a0a0a 40%),
+    url("../assets/noise.png");
+  background-blend-mode: overlay;
+  background-size: cover, 300px;
   color: #eaeaea;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: url("../assets/noise.png");
-  opacity: 0.4;
-  pointer-events: none;
-  z-index: 0;
+html, body {
+  overscroll-behavior-x: none;
 }
-
-body > * {
-  position: relative;
-  z-index: 1;
-}
-
 
 /* ===== ヒーローセクション ===== */
 
@@ -336,6 +328,7 @@ footer {
   border-top: 1px solid #222;
   color: #777;
 }
+
 
 
 
