@@ -275,15 +275,12 @@ section h2 {
 /* ===== カクテルUI ===== */
 
 .cocktail-card {
-  background: var(--card-bg);
-  padding: 20px;
+  background: linear-gradient(145deg, #161616, #111);
+  padding: 25px;
   border-radius: 16px;
-  border: 1px solid var(--card-border);
-  margin-bottom: 20px;
-}
-
-.cocktail-card h3 {
-  color: var(--neon-purple);
+  border: 1px solid #222;
+  margin-bottom: 40px;
+  transition: 0.3s ease;
 }
 
 .cocktail-card:hover {
@@ -292,11 +289,28 @@ section h2 {
     0 0 12px #a100ff55,
     0 0 30px #a100ff22;
   transform: translateY(-4px);
-  transition: 0.3s ease;
+}
+
+.cocktail-card h3 {
+  margin-top: 0;
+  color: var(--neon-red);
+}
+
+.cocktail-meta {
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+  color: #eaeaea;
 }
 
 .cocktail-meta span {
-  color: #aaa;
+  color: #eaeaea;
+  font-weight: 600;
+}
+
+.cocktail-ingredients h4,
+.cocktail-method h4 {
+  margin-bottom: 10px;
+  color: #ccc;
 }
 
 .cocktail-ingredients ul {
@@ -322,6 +336,7 @@ footer {
   border-top: 1px solid #222;
   color: #777;
 }
+
 
 
 
