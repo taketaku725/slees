@@ -27,6 +27,7 @@
     <div class="game-card">
 
       <h3>飲ディアンポーカー</h3>
+      <p style="color:#eaeaea; margin-top:-5px;">提案者：たくみ</p>
 
       <div class="game-meta">
         <p><span>推奨人数：</span>2〜6人</p>
@@ -58,23 +59,31 @@
 
   </section>
 
-  <form name="game" method="POST" data-netlify="true" netlify>
-    <input type="hidden" name="form-name" value="game">
+  <section class="post-section">
+    <h2>新しいゲームを投稿</h2>
 
-    <p style="display:none;">
-      <label>Don’t fill this out: <input name="bot-field" /></label>
-    </p>
-    <input type="hidden" name="bot-field">
+    <div class="post-card">
+      <form name="game" method="POST" data-netlify="true" netlify>
+        <input type="hidden" name="form-name" value="game">
 
-    <input type="text" name="title" placeholder="ゲーム名" required>
-    <input type="text" name="players" placeholder="推奨人数" required>
-    <input type="text" name="time" placeholder="所要時間" required>
-    <input type="text" name="items" placeholder="必要なもの" required>
-    <input type="number" name="danger" min="1" max="5" required>
-    <textarea name="rule" placeholder="ルール" required></textarea>
-  
-    <button type="submit">投稿</button>
-  </form>
+        <p style="display:none;">
+          <label>Don’t fill this out: <input name="bot-field" /></label>
+        </p>
+        <input type="hidden" name="bot-field">
+
+        <input type="text" name="title" placeholder="ゲーム名" required>
+        <input type="text" name="author" placeholder="提案者名" required>
+        <input type="text" name="players" placeholder="推奨人数" required>
+        <input type="text" name="time" placeholder="所要時間" required>
+        <input type="text" name="items" placeholder="必要なもの" required>
+        <input type="number" name="danger" min="1" max="5" placeholder="危険度 (1-5)" required>
+        <textarea name="rule" placeholder="ルール" required></textarea>
+
+        <button type="submit">投稿する</button>
+      </form>
+    </div>
+  </section>
+
 </main>
 
 <footer>
