@@ -311,8 +311,9 @@ section h2 {
 
 .taste-tag {
   display: inline-block;
-  background: var(--neon-purple);
-  color: #000;
+  background: linear-gradient(135deg, #a100ff, #ff003c);
+  color: #fff;
+  box-shadow: 0 0 8px #a100ff55;
   font-size: 0.75rem;
   padding: 3px 8px;
   border-radius: 20px;
@@ -328,6 +329,7 @@ footer {
   border-top: 1px solid #222;
   color: #777;
 }
+
 
 
 
