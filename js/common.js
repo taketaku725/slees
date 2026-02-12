@@ -62,11 +62,77 @@ async function loadDynamicGames() {
   }
 }
 
+async function loadCocktails() {
+  try {
+    const res = await fetch("./data/cocktails.json");
+    const cocktails = await res.json();
+
+    const container = document.getElementById("dynamic-cocktails");
+    if (!container) return;
+
+    container.innerHTML = "";
+
+    cocktails
+      .sort((a, b) =>
+        new Date(b.created_at) - new Date(a.created_at)
+      )
+      .forEach(c => {
+
+        const card = document.createElement("div");
+        card.className = "cocktail-card";
+
+        const ingredientsList = c.ingredients
+          .map(i => `<li>${i.name}：${i.amount}</li>`)
+          .join("");
+
+        const tasteTags = (c.taste || [])
+          .map(t => `<span class="taste-tag">${t}</span>`)
+          .join("");
+
+        card.innerHTML = `
+          <h3>${c.name}</h3>
+          <p class="game-author">提案者：${c.creator || "匿名"}</p>
+
+          <div class="cocktail-meta">
+            <p><span>ベース：</span>${c.base}</p>
+            <p><span>グラス：</span>${c.glass}</p>
+          </div>
+
+          <div class="cocktail-ingredients">
+            <h4>材料</h4>
+            <ul>${ingredientsList}</ul>
+          </div>
+
+          <div class="cocktail-method">
+            <h4>作り方</h4>
+            <p>${(c.method || "").replace(/\n/g, "<br>")}</p>
+          </div>
+
+          <div class="cocktail-description">
+            <p>${c.description || ""}</p>
+          </div>
+
+          <div class="cocktail-taste">
+            ${tasteTags}
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
-  generateStars();    // 固定カード用
-  loadDynamicGames(); // 投稿カード用
+  generateStars();
+  loadDynamicGames();
+  loadCocktails();
 });
+
 
 
 
