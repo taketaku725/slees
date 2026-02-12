@@ -286,6 +286,15 @@ section h2 {
   color: var(--neon-purple);
 }
 
+.cocktail-card:hover {
+  border-color: var(--neon-purple);
+  box-shadow:
+    0 0 12px #a100ff55,
+    0 0 30px #a100ff22;
+  transform: translateY(-4px);
+  transition: 0.3s ease;
+}
+
 .cocktail-meta span {
   color: #aaa;
 }
@@ -313,5 +322,6 @@ footer {
   border-top: 1px solid #222;
   color: #777;
 }
+
 
 
