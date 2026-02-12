@@ -1,5 +1,5 @@
 exports.handler = async function () {
-  const siteId = process.env.SITE_ID;
+  const siteId = process.env.NETLIFY_SITE_ID;
   const token = process.env.NETLIFY_AUTH_TOKEN;
 
   try {
