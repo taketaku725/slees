@@ -37,6 +37,9 @@ async function loadDynamicGames() {
 
       card.innerHTML = `
         <h3>${d.title}</h3>
+        <p style="color:#eaeaea; margin-top:-5px;">
+          提案者：${d.author || "匿名"}
+        </p>
         <div class="game-meta">
           <p><span>推奨人数：</span>${d.players}</p>
           <p><span>所要時間：</span>${d.time}</p>
@@ -50,7 +53,7 @@ async function loadDynamicGames() {
           <h4>ルール</h4>
           <p>${(d.rule || "").replace(/\n/g, "<br>")}</p>
         </div>
-      `;
+`      ;
 
       container.appendChild(card);
     });
@@ -66,3 +69,4 @@ document.addEventListener("DOMContentLoaded", () => {
   generateStars();    // 固定カード用
   loadDynamicGames(); // 投稿カード用
 });
+
