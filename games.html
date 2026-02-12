@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SLEES 飲みゲー</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600&family=Orbitron:wght@600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+  <h1>SLEES 公式サイト</h1>
+  <nav>
+    <a href="index.html">ホーム</a>
+    <a href="cocktails.html">オリジナルカクテル</a>
+    <a href="games.html" class="active">飲みゲー投稿</a>
+    <a href="members.html">メンバー紹介</a>
+  </nav>
+</header>
+
+<main>
+  <section>
+    <h2>飲み会ゲーム</h2>
+
+    <div class="game-card">
+
+      <h3>飲ディアンポーカー</h3>
+
+      <div class="game-meta">
+        <p><span>推奨人数：</span>2〜6人</p>
+        <p><span>所要時間：</span>3分程度</p>
+        <p><span>必要なもの：</span>トランプ52枚、酒</p>
+        <p class="danger">
+          <span>危険度：</span>
+          <span class="danger-level" data-level="3"></span>
+        </p>
+      </div>
+
+      <div class="game-rule">
+        <h4>ルール</h4>
+        <p>
+          山札から１枚引き、自分に見えないように頭に掲げる。
+          １回だけ自分のカードを交換してよい。
+          カードの数字が大きい方が勝ち。
+          ただし、AはKにのみ勝てる。
+          負けた人は自分の手札の数字分のお酒を飲む。
+          数字分とは、プレイヤー同士で任意で決めてよい。
+          例えば、数字x5度(4で負けたら20度)など。
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <form name="game" method="POST" data-netlify="true">
+    <input type="hidden" name="form-name" value="game">
+
+    <input type="text" name="title" placeholder="ゲーム名" required>
+    <input type="text" name="players" placeholder="推奨人数" required>
+    <input type="text" name="time" placeholder="所要時間" required>
+    <input type="text" name="items" placeholder="必要なもの" required>
+    <input type="number" name="danger" min="1" max="5" required>
+    <textarea name="rule" placeholder="ルール" required></textarea>
+  
+    <button type="submit">投稿</button>
+  </form>
+</main>
+
+<footer>
+  <p>© SLEES</p>
+</footer>
+
+<script src="js/common.js"></script>
+</body>
+</html>
