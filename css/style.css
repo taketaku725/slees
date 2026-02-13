@@ -10,11 +10,17 @@
 body {
   margin: 0;
   font-family: 'Noto Sans JP', sans-serif;
+
   background:
     radial-gradient(circle at 20% 0%, #1a001f 0%, #0a0a0a 40%),
     url("../assets/noise.png");
+
+  background-size: cover, cover;        /* ← 重要 */
+  background-repeat: no-repeat, no-repeat;
+  background-attachment: scroll, fixed; /* ← ノイズ固定 */
+  background-position: center, center;
+
   background-blend-mode: soft-light;
-  background-size: cover, 300px;
   color: #eaeaea;
 }
 
@@ -340,6 +346,7 @@ footer {
   border-top: 1px solid #222;
   color: #777;
 }
+
 
 
 
