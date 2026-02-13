@@ -20,7 +20,7 @@ body {
   background-attachment: scroll, fixed; /* ← ノイズ固定 */
   background-position: center, center;
 
-  background-blend-mode: soft-light;
+  background-blend-mode: overlay;
   color: #eaeaea;
 }
 
@@ -346,6 +346,7 @@ footer {
   border-top: 1px solid #222;
   color: #777;
 }
+
 
 
 
