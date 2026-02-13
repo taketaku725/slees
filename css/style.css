@@ -89,6 +89,7 @@ nav a {
   text-decoration: none;
   color: #ccc;
   transition: 0.3s;
+  white-space: nowrap;
 }
 
 nav a:hover {
@@ -339,6 +340,7 @@ footer {
   border-top: 1px solid #222;
   color: #777;
 }
+
 
 
 
