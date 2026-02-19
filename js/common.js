@@ -34,9 +34,6 @@ async function loadDynamicGames() {
 
         card.innerHTML = `
           <h3>${d.title}</h3>
-          <p class="game-author">
-            提案者：${d.author || "匿名"}
-          </p>
           <div class="game-meta">
             <p><span>推奨人数：</span>${d.players}</p>
             <p><span>所要時間：</span>${d.time}</p>
@@ -91,7 +88,6 @@ async function loadCocktails() {
 
         card.innerHTML = `
           <h3>${c.name}</h3>
-          <p class="game-author">提案者：${c.creator || "匿名"}</p>
 
           <div class="cocktail-meta">
             <p><span>ベース：</span>${c.base}</p>
@@ -132,6 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loadDynamicGames();
   loadCocktails();
 });
+
 
 
 
