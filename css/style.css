@@ -190,6 +190,7 @@ section h2 {
   width: 1.2em;
   height: 1.2em;
   object-fit: contain;
+  border-radius: 6px;
 }
 
 .card-grid {
@@ -354,6 +355,7 @@ footer {
   border-top: 1px solid #222;
   color: #777;
 }
+
 
 
 
