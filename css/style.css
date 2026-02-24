@@ -129,6 +129,27 @@ section h2 {
   letter-spacing: 1px;
 }
 
+/* ===== 更新記録 ===== */
+
+.updates {
+  margin-top: 40px;
+}
+
+.update-box {
+  max-height: 4.5em;        /* 約3行分 */
+  overflow-y: auto;
+  padding: 15px 20px;
+  border: 1px solid #222;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #161616, #111);
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.update-box p {
+  margin: 0 0 6px 0;
+}
+
 /* ===== カードUI ===== */
 
 .card {
@@ -355,6 +376,7 @@ footer {
   border-top: 1px solid #222;
   color: #777;
 }
+
 
 
 
