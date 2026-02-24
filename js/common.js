@@ -13,6 +13,27 @@ function generateStars() {
   });
 }
 
+async function loadUpdates() {
+  try {
+    const res = await fetch("./data/updates.json");
+    const updates = await res.json();
+
+    const container = document.getElementById("update-box");
+    if (!container) return;
+
+    container.innerHTML = "";
+
+    updates.forEach(u => {
+      const p = document.createElement("p");
+      p.textContent = `${u.date}  ${u.text}`;
+      container.appendChild(p);
+    });
+
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 async function loadDynamicGames() {
   try {
     const res = await fetch("./data/games.json");
@@ -127,7 +148,9 @@ document.addEventListener("DOMContentLoaded", () => {
   generateStars();
   loadDynamicGames();
   loadCocktails();
+  loadUpdates();
 });
+
 
 
 
