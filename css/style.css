@@ -150,6 +150,15 @@ section h2 {
   margin: 0 0 6px 0;
 }
 
+.update-box::-webkit-scrollbar {
+  width: 4px;
+}
+
+.update-box::-webkit-scrollbar-thumb {
+  background: #a100ff55;
+  border-radius: 10px;
+}
+
 /* ===== カードUI ===== */
 
 .card {
@@ -376,6 +385,7 @@ footer {
   border-top: 1px solid #222;
   color: #777;
 }
+
 
 
 
