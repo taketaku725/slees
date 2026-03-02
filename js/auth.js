@@ -9,21 +9,58 @@ function showLockScreen() {
       display:flex;
       align-items:center;
       justify-content:center;
-      background:#000;
+      background: radial-gradient(circle at 20% 0%, #2a0035 0%, #0a0a0a 50%);
       color:#fff;
       flex-direction:column;
-      font-family:sans-serif;
+      font-family:'Orbitron','Noto Sans JP',sans-serif;
     ">
-      <h2>Enter Password</h2>
-      <input type="password" id="pw" style="padding:8px;margin:10px;">
-      <button id="submit">Unlock</button>
-      <p id="error" style="color:red;"></p>
+      <h2 style="
+        margin-bottom:20px;
+        color:#ff003c;
+        text-shadow:0 0 10px #ff003c88;
+      ">
+        SLEES
+      </h2>
+
+      <input 
+        type="password" 
+        id="pw" 
+        placeholder="Enter Password"
+        style="
+          padding:10px 14px;
+          margin-bottom:15px;
+          background:#111;
+          border:1px solid #a100ff55;
+          border-radius:8px;
+          color:#fff;
+          outline:none;
+          text-align:center;
+        "
+      >
+
+      <button 
+        id="submit"
+        style="
+          padding:8px 18px;
+          background:#a100ff;
+          border:none;
+          border-radius:8px;
+          color:#000;
+          cursor:pointer;
+        "
+      >
+        Unlock
+      </button>
+
+      <p id="error" style="color:#ff003c;margin-top:15px;"></p>
     </div>
   `;
 
-  document.getElementById("submit").onclick = async () => {
-    const input = document.getElementById("pw").value;
-    const hash = await sha256(input);
+  const input = document.getElementById("pw");
+  const button = document.getElementById("submit");
+
+  async function attemptUnlock() {
+    const hash = await sha256(input.value);
 
     if (hash === PASSWORD_HASH) {
       localStorage.setItem("slees_auth", JSON.stringify({
@@ -33,8 +70,20 @@ function showLockScreen() {
       location.reload();
     } else {
       document.getElementById("error").textContent = "Incorrect password";
+      input.value = "";
     }
-  };
+  }
+
+  button.onclick = attemptUnlock;
+
+  // Enterキー対応
+  input.addEventListener("keydown", function(e){
+    if (e.key === "Enter") {
+      attemptUnlock();
+    }
+  });
+
+  input.focus();
 }
 
 async function sha256(str){
