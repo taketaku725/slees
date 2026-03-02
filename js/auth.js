@@ -1,5 +1,5 @@
 const AUTH_VERSION = "v1"; // パス変更時に変更する
-const PASSWORD_HASH = "fb4f732d4e8de2e8ecfd20e94da24ff75bea6c8fde27fd50d31be71df3b75116";
+const PASSWORD_HASH = "7d602bede2310b19d50bc59320ed396906fbcbc1229c4a8bfa1a09751f9419b5";
 const EXPIRATION_DAYS = 30;
 
 function showLockScreen() {
