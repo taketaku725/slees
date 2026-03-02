@@ -25,7 +25,7 @@ function showLockScreen() {
       <input 
         type="password" 
         id="pw" 
-        placeholder="Enter Password"
+        placeholder="パスワードを入力する"
         style="
           padding:10px 14px;
           margin-bottom:15px;
@@ -49,7 +49,7 @@ function showLockScreen() {
           cursor:pointer;
         "
       >
-        Unlock
+        入室
       </button>
 
       <p id="error" style="color:#ff003c;margin-top:15px;"></p>
@@ -69,7 +69,7 @@ function showLockScreen() {
       }));
       location.reload();
     } else {
-      document.getElementById("error").textContent = "Incorrect password";
+      document.getElementById("error").textContent = "パスワードが違います";
       input.value = "";
     }
   }
