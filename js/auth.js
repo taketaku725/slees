@@ -49,7 +49,7 @@ function showLockScreen() {
             cursor:pointer;
           "
         >
-          👁
+        👁
         </button>
       </div>
 
@@ -100,9 +100,14 @@ function showLockScreen() {
 
   toggle.onclick = () => {
     if (input.type === "password") {
+
       input.type = "text";
+      toggle.style.color = "#a100ff";
+      toggle.style.borderColor = "#a100ff";
     } else {
       input.type = "password";
+      toggle.style.color = "#ccc";
+      toggle.style.borderColor = "#a100ff55";
     }
   };
 
