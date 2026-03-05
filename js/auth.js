@@ -22,25 +22,40 @@ function showLockScreen() {
         SLEES
       </h2>
 
-      <input 
-        type="password" 
-        id="pw" 
-        placeholder="パスワードを入力する"
-        style="
-          padding:10px 14px;
-          margin-bottom:15px;
-          background:#111;
-          border:1px solid #a100ff55;
-          border-radius:8px;
-          color:#fff;
-          outline:none;
-          text-align:center;
-        "
-      >
+      <div style="position:relative; display:flex; align-items:center;">
+        <input 
+          type="password"
+          id="pw"
+          placeholder="Enter Password"
+          style="
+            padding:10px 14px;
+            background:#111;
+            border:1px solid #a100ff55;
+            border-radius:8px;
+            color:#fff;
+            outline:none;
+            text-align:center;
+          "
+        >
 
-      <button 
-        id="submit"
+        <button id="togglePw"
+          style="
+            margin-left:8px;
+            padding:6px 10px;
+            background:#222;
+            border:1px solid #a100ff55;
+            color:#ccc;
+            border-radius:6px;
+            cursor:pointer;
+          "
+        >
+          👁
+        </button>
+      </div>
+
+      <button id="submit"
         style="
+          margin-top:15px;
           padding:8px 18px;
           background:#a100ff;
           border:none;
@@ -49,7 +64,7 @@ function showLockScreen() {
           cursor:pointer;
         "
       >
-        入室
+        Unlock
       </button>
 
       <p id="error" style="color:#ff003c;margin-top:15px;"></p>
@@ -58,6 +73,7 @@ function showLockScreen() {
 
   const input = document.getElementById("pw");
   const button = document.getElementById("submit");
+  const toggle = document.getElementById("togglePw");
 
   async function attemptUnlock() {
     const hash = await sha256(input.value);
@@ -69,19 +85,26 @@ function showLockScreen() {
       }));
       location.reload();
     } else {
-      document.getElementById("error").textContent = "パスワードが違います";
+      document.getElementById("error").textContent = "Incorrect password";
       input.value = "";
     }
   }
 
   button.onclick = attemptUnlock;
 
-  // Enterキー対応
   input.addEventListener("keydown", function(e){
     if (e.key === "Enter") {
       attemptUnlock();
     }
   });
+
+  toggle.onclick = () => {
+    if (input.type === "password") {
+      input.type = "text";
+    } else {
+      input.type = "password";
+    }
+  };
 
   input.focus();
 }
