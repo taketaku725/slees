@@ -112,7 +112,7 @@ async function loadCocktails() {
 
           <div class="cocktail-meta">
             <p><span>ベース：</span>${c.base}</p>
-            <p><span>グラス：</span>${c.glass}</p>
+            <p><span>技法：</span>${c.glass}</p>
           </div>
 
           <div class="cocktail-ingredients">
